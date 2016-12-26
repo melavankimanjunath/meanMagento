@@ -9,15 +9,15 @@ exports.category = function (req, res) {
     // We need categoryId as GET parameter
     // CategoryId is constant now its 3
     var categoryId = 3;
- //   Check if category already exist in MongoDB the return data from MongoDB itself
-  //   db.getCategory(21, function (err, categoryDetails) {
-  //       if (err) {
-  //           console.log('category err');
-  //       } else if(categoryDetails.length != 0){
-  //           console.log('*** Data from MDB ***');
-  // //          console.log(categoryDetails)
-  //           res.send(categoryDetails);
-  //       } else{
+   // Check if category already exist in MongoDB the return data from MongoDB itself
+    db.getCategory(21, function (err, categoryDetails) {
+        if (err) {
+            console.log('category err');
+        } else if(categoryDetails.length != 0){
+            console.log('*** Data from MDB ***');
+  //          console.log(categoryDetails)
+            res.send(categoryDetails);
+        } else {
         var client = Magento2Client(MagentoApiConfig.options);
             client.categories.getCategoryWithChild(21)
                 .then(function (response) {
@@ -33,7 +33,7 @@ exports.category = function (req, res) {
                     res.send(response);
                   }
             });
-     //   }
+       }
 
-   // });
+   });
 };
