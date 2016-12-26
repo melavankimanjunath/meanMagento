@@ -10,7 +10,7 @@ exports.category = function (req, res) {
     // CategoryId is constant now its 3
     var categoryId = 3;
    // Check if category already exist in MongoDB the return data from MongoDB itself
-    db.getCategory(21, function (err, categoryDetails) {
+    db.getCategory(categoryId, function (err, categoryDetails) {
         if (err) {
             console.log('category err');
         } else if(categoryDetails.length != 0){
@@ -19,7 +19,7 @@ exports.category = function (req, res) {
             res.send(categoryDetails);
         } else {
         var client = Magento2Client(MagentoApiConfig.options);
-            client.categories.getCategoryWithChild(21)
+            client.categories.getCategoryWithChild(categoryId)
                 .then(function (response) {
 //                    console.log(response);
                   if ( response.length  != 0 ) {
