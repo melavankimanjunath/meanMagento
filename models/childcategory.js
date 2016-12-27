@@ -12,6 +12,9 @@ var childCategorySchema = new Schema({
     name: {
         type : String, required : false,
         },
+    description: {
+        type : String, required : false,
+        },
     isActive: {
         type : Number, required : false,
         },

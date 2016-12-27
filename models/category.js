@@ -12,6 +12,9 @@ var childCategorySchema = new Schema({
     name: {
         type : String, required : false,
         },
+    description: {
+        type : String, required : false,
+        },
     isActive: {
         type : Number, required : false,
         },
@@ -28,6 +31,9 @@ var categorySchema = new Schema({
         type : Number, required : false,
         },
     name: {
+        type : String, required : false,
+        },
+    description: {
         type : String, required : false,
         },
     isActive: {

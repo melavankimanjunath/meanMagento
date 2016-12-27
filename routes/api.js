@@ -8,7 +8,7 @@ exports.category = function (req, res) {
 //    console.log(req.params);
     // We need categoryId as GET parameter
     // CategoryId is constant now its 3
-    var categoryId = 3;
+    var categoryId = 2;
    // Check if category already exist in MongoDB the return data from MongoDB itself
     db.getCategory(categoryId, function (err, categoryDetails) {
         if (err) {
