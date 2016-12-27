@@ -14,8 +14,9 @@ exports.category = function (req, res) {
         if (err) {
             console.log('category err');
         } else if(categoryDetails.length != 0){
+
             console.log('*** Data from MDB ***');
-  //          console.log(categoryDetails)
+            console.log(categoryDetails)
             res.send(categoryDetails);
         } else {
         var client = Magento2Client(MagentoApiConfig.options);

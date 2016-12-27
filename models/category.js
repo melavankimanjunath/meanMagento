@@ -1,51 +1,33 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 console.log('categorySchema');
-// var childSchema = new Schema({
-//     entityId: {
-//         type : Number, required : true,
-//         },
-//     attributeSetId: {
-//         type : Number, required : false,
-//         },
-//     parentId: {
-//         type : Number, required : false,
-//         },
-//     path: {
-//         type : String, required : false,
-//         },
-//     position: {
-//         type : Number, required : false,
-//         },
-//     level: {
-//         type : Number, required : false,
-//         },
-//     childrenCount: {
-//         type : Number, required : false,
-//         },
-//     name: {
-//         type : String, required : false,
-//         },
-//     urlKey: {
-//         type : String, required : false,
-//         },
-//     urlPath: {
-//         type : String, required : false,
-//         },
-//     isActive: {
-//         type : Number, required : false,
-//         },
-//     isAnchor: {
-//         type : Number, required : false,
-//         },
-//     includeInMenu: {
-//         type : Number, required : false,
-//         },
-//     image: {
-//         type : String, required : false,
-//         }
+
+// var categorySchema = Schema({
+//     name: String,
+//     children: [{ type: Schema.ObjectId, ref: 'Category' }],
 // });
-var parentSchema = new Schema({
+
+// var Category = mongoose.model('Category', categorySchema);
+
+var childCategorySchema = new Schema({
+    entityId: {
+        type : Number, required : true, unique: true
+        },
+    parentId: {
+        type : Number, required : false,
+        },
+    name: {
+        type : String, required : false,
+        },
+    isActive: {
+        type : Number, required : false,
+        },
+    image: {
+        type : String, required : false,
+        }
+});
+
+var categorySchema = new Schema({
     entityId: {
         type : Number, required : true, unique: true
         },
@@ -61,7 +43,8 @@ var parentSchema = new Schema({
     image: {
         type : String, required : false,
         },
-    childrens: String, required: false
+   children: [childCategorySchema],
 });
-module.exports = mongoose.model('category', parentSchema);
+
+module.exports = mongoose.model('category', categorySchema);
 //module.exports = mongoose.model('childrens', childSchema);
