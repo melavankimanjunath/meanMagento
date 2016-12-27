@@ -2,13 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 console.log('categorySchema');
 
-// var categorySchema = Schema({
-//     name: String,
-//     children: [{ type: Schema.ObjectId, ref: 'Category' }],
-// });
-
-// var Category = mongoose.model('Category', categorySchema);
-
 var childCategorySchema = new Schema({
     entityId: {
         type : Number, required : true, unique: true
@@ -47,4 +40,3 @@ var categorySchema = new Schema({
 });
 
 module.exports = mongoose.model('category', categorySchema);
-//module.exports = mongoose.model('childrens', childSchema);
